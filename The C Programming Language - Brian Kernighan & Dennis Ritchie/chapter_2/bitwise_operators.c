@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Including exercise 2_4 - 2_8
 void print_binary(unsigned x, int bits)
 {
     for (int i = 8 - 1; i >= 0; i--)
