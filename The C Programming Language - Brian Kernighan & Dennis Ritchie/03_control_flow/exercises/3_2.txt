@@ -1,0 +1,6 @@
+Hello	my	name
+Josh	and	this    file
+contains
+lots    of
+tabs    and
+newlines
