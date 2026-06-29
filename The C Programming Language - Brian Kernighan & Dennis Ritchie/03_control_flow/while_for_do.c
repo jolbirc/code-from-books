@@ -18,6 +18,8 @@ void expand(char s[]);
 void itoa(long n, char s[]);
 // Convert integer to base
 void itob(int n, char s[], int b);
+// itoa with padding
+void itoax(long n, char s[], int pad);
 
 
 /* Main */
@@ -78,8 +80,8 @@ int main() {
 
     for (int i = 0; k[i] != '\0'; i++) {
         printf("%c", k[i]);
-        printf("\n");
     }
+    printf("\n");
 
 
     // itob
@@ -87,6 +89,18 @@ int main() {
     char l[20];
     itob(25, l, 2);
     printf("%s\n", l);
+
+
+    // itoax
+    printf("\nitox():\n");
+    char m[20];
+    itoax(INT_MIN, m, 10);
+
+    for (int i = 0; m[i] != '\0'; i++) {
+        printf("%c", m[i]);
+    }
+    printf("\n");
+
 
     return 0;
 }
@@ -198,6 +212,32 @@ void itob(int n, char s[], int b) {
             s[i++] = '1';
         }
         n /= b;
+    }
+
+    s[i] = '\0';
+    reverse(s);
+}
+
+void itoax(long n, char s[], int pad) {
+    int i, sign;
+
+    if ((sign = n) < 0) {   // Record sign
+        n = -n;             // Make n positive
+    }
+
+    i = 0;
+
+    do {
+        s[i++] = n % 10 + '0';  // Get next digit
+    } while ((n /= 10) > 0);    // Delete it
+
+    do {
+        s[i++] = '0';
+        pad--;
+    } while (pad > 0);
+
+    if (sign < 0) {
+        s[i++] = '-';
     }
 
     s[i] = '\0';
