@@ -7,19 +7,20 @@
 void escape(int c);
 void reescape(int c);
 
-int main() {
-
+int main()
+{
     int c;
 
-    while ((c = getchar()) != EOF) {
+    while ((c = getchar()) != EOF)
         escape(c);
-    }
 
     return 0;
 }
 
-void escape(int c) {
-    switch(c) {
+void escape(int c)
+{
+    switch(c)
+    {
         case '\n':
             putchar('\\');
             putchar('n');
@@ -34,11 +35,14 @@ void escape(int c) {
     }
 }
 
-void reescape(int c) {
+void reescape(int c)
+{
     static int prev = 0;
 
-    if (prev == '\\') {
-        switch(c) {
+    if (prev == '\\')
+    {
+        switch(c)
+        {
             case 'n':
                 putchar('\n');
                 break;
@@ -50,10 +54,14 @@ void reescape(int c) {
                 putchar(c);
                 break;
         }
-    } else if (c != '\\') {
+    }
+    else if (c != '\\')
+    {
         putchar(c);
         prev = 0;
-    } else {
+    }
+    else
+    {
         prev = c;
     }
 }
